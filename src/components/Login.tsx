@@ -13,7 +13,8 @@ function Login(props: Props) {
   const handleLogin = (event) => {
     event.preventDefault()
 
-    callLogin(email, password).then(data => handleJwt(data.jwt))
+    // callLogin(email, password).then(data => handleJwt(data.jwt))
+    callLogin('user@sample.com', 'test').then(data => handleJwt(data.jwt))
   }
 
   return (

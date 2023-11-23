@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       { !jwt && <Login handleJwt={handleJwt} /> }
-      { jwt && <BookSearchForm /> }
+      { jwt && <BookSearchForm jwt={jwt} /> }
     </>
   )
 }
