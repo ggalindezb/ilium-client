@@ -5,11 +5,15 @@ import Login from './components/Login'
 import BookSearchForm from './components/BookSearchForm'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [jwt, setJwt] = useState<string|null>()
+  const handleJwt = (jwt: string) => {
+    setJwt(jwt)
+  }
 
   return (
     <>
-      <Login />
+      {jwt}
+      <Login handleJwt={handleJwt} />
       <BookSearchForm />
     </>
   )
