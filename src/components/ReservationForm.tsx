@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { searchReservation } from '../services/Reservation'
+import { searchReservation, updateReservation } from '../services/Reservation'
 
 interface Props {
   jwt: string
@@ -42,6 +42,13 @@ function ReservationForm(props: Props) {
     searchReservation(jwt, code).then(data => setReservationInfo(data))
   }
 
+  const handleEditReserve = (event) => {
+    event.preventDefault()
+    if(!code) return
+
+    updateReservation(jwt, code).then(data => setReservationInfo(data))
+  }
+
   const reservationConfirmationJSX = (
     <>
       <h3>Reserve found!</h3>
@@ -49,7 +56,7 @@ function ReservationForm(props: Props) {
       <p>{reservationInfo?.user?.email}</p>
       <p>{reservationInfo?.book?.author}: {reservationInfo?.book?.title}</p>
       <form>
-        <button>{reservationInfo?.book?.reserved ? 'Return' : 'Lend'}</button>
+        <button onClick={event => handleEditReserve(event)}>{reservationInfo?.book?.reserved ? 'Return' : 'Lend'}</button>
       </form>
     </>
   )
