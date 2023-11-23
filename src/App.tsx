@@ -3,17 +3,34 @@ import './App.css'
 
 import Login from './components/Login'
 import BookSearchForm from './components/BookSearchForm'
+import ReservationForm from './components/ReservationForm'
+
+interface User {
+  jwt: string|null
+  role: string|null
+}
 
 function App() {
-  const [jwt, setJwt] = useState<string|null>()
-  const handleJwt = (jwt: string) => {
-    setJwt(jwt)
+  const [user, setUser] = useState<User>({
+    jwt: null,
+    role: null
+  })
+  const { jwt, role } = user
+
+  const handleUser = (jwt: string, role: string) => {
+    setUser({
+      jwt,
+      role
+    })
   }
+
+  console.log(jwt, role)
 
   return (
     <>
-      { !jwt && <Login handleJwt={handleJwt} /> }
-      { jwt && <BookSearchForm jwt={jwt} /> }
+      { !jwt && <Login handleUser={handleUser} /> }
+      { jwt && role === 'member' && <BookSearchForm jwt={jwt} /> }
+      { jwt && role === 'admin' && <ReservationForm jwt={jwt} /> }
     </>
   )
 }
