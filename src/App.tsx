@@ -12,9 +12,8 @@ function App() {
 
   return (
     <>
-      {jwt}
-      <Login handleJwt={handleJwt} />
-      <BookSearchForm />
+      { !jwt && <Login handleJwt={handleJwt} /> }
+      { jwt && <BookSearchForm /> }
     </>
   )
 }

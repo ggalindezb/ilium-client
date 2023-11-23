@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { callLogin } from '../services/authentication'
 
 interface Props {
   handleJwt: (jwt: string) => void
@@ -12,7 +13,7 @@ function Login(props: Props) {
   const handleLogin = (event) => {
     event.preventDefault()
 
-    handleJwt('eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoibWVtYmVyIn0.JOyUK5vTfb-v8SBZyFLduJL8WM0dao8OzYSxhAFQq8E')
+    callLogin(email, password).then(data => handleJwt(data.jwt))
   }
 
   return (
