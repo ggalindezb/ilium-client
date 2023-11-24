@@ -1,5 +1,7 @@
+import { API_URL } from "./Constants"
+
 export const searchReservation = async (jwt: string, code: string) => {
-  const url = `http://localhost:3000/reserve/${code}`
+  const url = `${API_URL}/reserve/${code}`
 
   const response = await fetch(url, {
     headers: {
@@ -11,7 +13,7 @@ export const searchReservation = async (jwt: string, code: string) => {
 }
 
 export const updateReservation = async (jwt: string, code: string) => {
-  const url = `http://localhost:3000/reserve/${code}`
+  const url = `${API_URL}/reserve/${code}`
 
   const response = await fetch(url, {
     method: 'PUT',
