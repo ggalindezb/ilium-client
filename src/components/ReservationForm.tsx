@@ -35,14 +35,14 @@ function ReservationForm(props: Props) {
   const [code, setCode] = useState<string>()
   const [reservationInfo, setReservationInfo] = useState<ReservationInfo>()
 
-  const handleSearchReservation = (event) => {
+  const handleSearchReservation = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault()
     if(!code) return
 
     searchReservation(jwt, code).then(data => setReservationInfo(data))
   }
 
-  const handleEditReserve = (event) => {
+  const handleEditReserve = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault()
     if(!code) return
 

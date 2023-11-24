@@ -1,6 +1,7 @@
-export const fetchBooks = async (jwt: string, author: string, title: string) => {
-  let url = 'http://localhost:3000/book/search?'
+import { API_URL } from "./Constants"
 
+export const fetchBooks = async (jwt: string, author: string, title: string) => {
+  let url = `${API_URL}/book/search?`
   url += new URLSearchParams({ author, title })
 
   const response = await fetch(url, {
@@ -14,7 +15,7 @@ export const fetchBooks = async (jwt: string, author: string, title: string) => 
 }
 
 export const reserveBook = async (jwt: string, id: number) => {
-  const url = `http://localhost:3000/book/reserve/${id}`
+  const url = `${API_URL}/book/reserve/${id}`
 
   const response = await fetch(url, {
     method: 'POST',

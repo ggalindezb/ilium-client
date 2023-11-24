@@ -1,5 +1,7 @@
+import { API_URL } from './Constants'
+
 export const callLogin = async (email: string, password: string) => {
-  const response = await fetch('http://localhost:3000/authentication', {
+  const response = await fetch(`${API_URL}/authentication`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

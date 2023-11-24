@@ -10,11 +10,11 @@ function Login(props: Props) {
   const [email, setEmail] = useState<string>()
   const [password, setPassword] = useState<string>()
 
-  const handleLogin = (event) => {
+  const handleLogin = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault()
-    // if(!email || !password) return
+    if(!email || !password) return
 
-    callLogin('clerk@sample.com', 'test').then(data => handleUser(data.jwt, data.role))
+    callLogin(email, password).then(data => handleUser(data.jwt, data.role))
   }
 
   return (

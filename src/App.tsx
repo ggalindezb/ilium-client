@@ -24,8 +24,6 @@ function App() {
     })
   }
 
-  console.log(jwt, role)
-
   return (
     <>
       { !jwt && <Login handleUser={handleUser} /> }

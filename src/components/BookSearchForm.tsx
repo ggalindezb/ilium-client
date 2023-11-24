@@ -29,12 +29,12 @@ function BookSearchForm(props: Props) {
     if(!books) fetchBooks(jwt, author, title).then(data => setBooks(data))
   }, [jwt, books, author, title])
 
-  const handleSearch = (event) => {
+  const handleSearch = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault()
     fetchBooks(jwt, author, title).then(data => setBooks(data))
   }
 
-  const handleReserve = (event, id: number) => {
+  const handleReserve = (event: React.MouseEvent<HTMLElement>, id: number) => {
     event.preventDefault()
     reserveBook(jwt, id).then(data => setReserve(data))
   }
